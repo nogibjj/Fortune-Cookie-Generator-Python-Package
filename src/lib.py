@@ -2,20 +2,39 @@
 import random
 import csv
 
-def encrypt(text, shift):
-    result = ''
-    for c in text:
-        if c.isalpha():
-            base = ord('a') if c.islower() else ord('A')
-            offset = (ord(c) - base + shift) % 26
-            result += chr(base + offset)
+def caesar_cipher_encrypt(text, shift):
+    encrypted_text = ""
+    for char in text:
+        if char.isalpha():  # Check if the character is a letter
+            is_upper = char.isupper()
+            char = char.lower()
+            char_code = ord(char)
+            char_code = ((char_code - ord('a') + shift) % 26) + ord('a')
+            if is_upper:
+                char_code = chr(char_code).upper()
+            else:
+                char_code = chr(char_code)
+            encrypted_text += char_code
         else:
-            result += c
-    return result
+            encrypted_text += char  # Preserve non-alphabet characters
+    return encrypted_text
 
-def decrypt(text, shift):
-    return encrypt(text, 26 - shift)
-
+def caesar_cipher_decrypt(text, shift):
+    decrypted_text = ""
+    for char in text:
+        if char.isalpha():  # Check if the character is a letter
+            is_upper = char.isupper()
+            char = char.lower()
+            char_code = ord(char)
+            char_code = ((char_code - ord('a') - shift) % 26) + ord('a')
+            if is_upper:
+                char_code = chr(char_code).upper()
+            else:
+                char_code = chr(char_code)
+            decrypted_text += char_code
+        else:
+            decrypted_text += char  # Preserve non-alphabet characters
+    return decrypted_text
 
 def fetch_value_from_csv(csv_filename):
     try:
@@ -36,5 +55,5 @@ def fetch_value_from_csv(csv_filename):
         return None  # CSV file not found or couldn't be opened
 
 def random_no():
-    random_number = random.randint(1, 1019)
-    return random_numer
+    random_number = random.randint(2, 1018)
+    return random_number
