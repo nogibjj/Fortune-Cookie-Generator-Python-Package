@@ -8,8 +8,8 @@ import requests
 
 
 def extract(
-    url="https://raw.githubusercontent.com/nogibjj/Simrun_sqlite-lab/main/data/Jeopardy.csv",
-    file_path="data/Jeopardy.csv",
+    url="https://raw.githubusercontent.com/nogibjj/week7_afraa_simrun_fortune_cookie/main/Fortune%20Cookies%20Dataset.csv",
+    file_path="data/Fortune_Cookies_Dataset.csv",
 ):
     """ "Extract a url to a file path"""
     with requests.get(url) as r:
