@@ -1,6 +1,9 @@
 from lib import fetch_value_from_db,random_no, createDB
 import fire 
+import click
 
+@click.command()
+@click.option()
 
 def main():
     createDB()
