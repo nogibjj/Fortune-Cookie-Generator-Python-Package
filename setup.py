@@ -17,9 +17,10 @@ setup(
     author='Simrun & Afraa',
     entry_points="""
     [console_scripts]
-    blkpy=blkpy.main:main
+    fortune=src.main:main
     """,
     #install_requires=['click==7.1.2'],
     install_requires=install_requires,
     version='0.0.1',
     url= "https://github.com/nogibjj/week7_afraa_simrun_fortune_cookie",
+)
