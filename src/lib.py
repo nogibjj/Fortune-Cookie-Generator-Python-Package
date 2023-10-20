@@ -1,8 +1,10 @@
 "encryption and decryption of the fortune cookie database"
 import random
 import csv
+import sqlite3
+import fire
 
-def caesar_cipher_encrypt(text, shift):
+def caesar_cipher_encrypt(text, shift=3):
     encrypted_text = ""
     for char in text:
         if char.isalpha():  # Check if the character is a letter
@@ -19,7 +21,7 @@ def caesar_cipher_encrypt(text, shift):
             encrypted_text += char  # Preserve non-alphabet characters
     return encrypted_text
 
-def caesar_cipher_decrypt(text, shift):
+def caesar_cipher_decrypt(text, shift=3):
     decrypted_text = ""
     for char in text:
         if char.isalpha():  # Check if the character is a letter
@@ -36,24 +38,45 @@ def caesar_cipher_decrypt(text, shift):
             decrypted_text += char  # Preserve non-alphabet characters
     return decrypted_text
 
-def fetch_value_from_csv(csv_filename):
-    try:
-        # Check if the random number is within the valid range
-        random_number = random_no()
-        if 1 <= random_number <= 1019:
-            with open(csv_filename, mode='r', newline='') as file:
-                csv_reader = csv.reader(file)
-                # Subtract 1 from the random number since Python uses 0-based indexing
-                row_number = random_number - 1
-                for i, row in enumerate(csv_reader):
-                    if i == row_number:
-                        return row
-            return None  # Random number was out of range
-        else:
-            return None  # Random number is out of the valid range
-    except FileNotFoundError:
-        return None  # CSV file not found or couldn't be opened
+def fetch_value_from_db(rand_num):
+      # Check if the random number is within the valid range
+    if 1 <= rand_num <= 1017:
+        conn = sqlite3.connect("fortune.db")
+        cursor = conn.cursor()
+        # Subtract 1 from the random number since Python uses 0-based indexing
+        row_number = rand_num - 1
+        cursor.execute('SELECT encrypted_fortune FROM fortune WHERE id = ?', (row_number,))
+        temp = cursor.fetchone()
+        # Decrypts value before sending back to terminal
+        # temp = ('Zkhq qrwklqj jrhv uljkw… jr ohiw.',)
+        # thus temp[0] should be used to fetch only the encrypted fortune i.e. Zkhq qrwklqj jrhv uljkw… jr ohiw.
+        decrypted_fortune = caesar_cipher_decrypt(temp[0])
+        
+        return decrypted_fortune # Random number was out of range
+    else:
+        return "Random Number out of Range"
 
 def random_no():
     random_number = random.randint(2, 1018)
     return random_number
+
+def createDB(dbname="fortune.db"):
+    conn = sqlite3.connect(dbname)
+    cursor = conn.cursor()
+    cursor.execute('DROP TABLE IF EXISTS fortune')
+    cursor.execute('''CREATE TABLE IF NOT EXISTS fortune (
+                    id INTEGER PRIMARY KEY,
+                    encrypted_fortune TEXT
+                )''')
+
+    # Read the fortunes from the CSV, encrypt them and insert them into the database
+    with open('data_fortune/Fortune_Cookies_Dataset.csv', 'r') as encrypted_file:
+        encrypted_fortunes = csv.reader(encrypted_file)
+        for row in encrypted_fortunes:
+            encrypted_fortune = caesar_cipher_encrypt(row[0])
+            cursor.execute("INSERT INTO fortune (encrypted_fortune) VALUES (?)", (encrypted_fortune,))
+
+    # Commit the changes and close the connection
+    conn.commit()
+    conn.close()
+
