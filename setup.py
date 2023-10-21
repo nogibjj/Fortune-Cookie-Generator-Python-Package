@@ -13,7 +13,7 @@ with open('requirements.txt', encoding='utf-8') as f:  # Corrected "encodings" t
 setup(
     name='fortune-cookie-demo',
     description='demo python CLI tool to generate random fortunes',
-    packages=find_packages(),
+    packages=find_packages(where='src'),
     author='Simrun & Afraa',
     entry_points="""
     [console_scripts]
