@@ -5,8 +5,8 @@ from setuptools import setup, find_packages
 # Build a wheel with: python setup.py bdist_wheel and install the pre-required package (wheel)
 
 
-# read the requirements.txt file and use it to install dependencies
-with open('requirements.txt', encodings = 'utf-8') as f:
+# Read the requirements.txt file and use it to install dependencies
+with open('requirements.txt', encoding='utf-8') as f:  # Corrected "encodings" to "encoding"
     install_requires = f.read().splitlines()
 
 
