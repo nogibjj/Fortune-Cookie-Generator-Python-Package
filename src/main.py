@@ -3,7 +3,7 @@ import fire
 import click
 import emoji
 import sys
-sys.path.append('/workspaces/week7_afraa_simrun_fortune_cookie/')
+sys.path.append('/workspaces/week7_afraa_simrun_fortune_cookie/src/main.py')
 from src.lib import fetch_value_from_db,random_no, createDB
 
 
