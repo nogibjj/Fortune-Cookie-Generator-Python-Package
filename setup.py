@@ -6,7 +6,7 @@ from setuptools import setup, find_packages
 
 
 # read the requirements.txt file and use it to install dependencies
-with open('requirements.txt') as f:
+with open('requirements.txt', encodings = 'utf-8') as f:
     install_requires = f.read().splitlines()
 
 
