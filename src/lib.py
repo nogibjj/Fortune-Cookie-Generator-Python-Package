@@ -79,11 +79,11 @@ def createDB(dbname="fortune.db"):
    # csv_file_path = os.path.join(parent_dir, 'data_fortune', 'Fortune_Cookies_Dataset.csv')
    
    # Use pkg_resources to access the data file included with your package
-    data_file_path = pkg_resources.resource_filename(__name__, 'data_fortune/Fortune_Cookies_Dataset.csv')
+    #data_file_path = pkg_resources.resource_filename(__name__, '/workspaces/week7_afraa_simrun_fortune_cookie/data_fortune/Fortune_Cookies_Dataset.csv')
 
 
     # Read the fortunes from the CSV, encrypt them, and insert them into the database
-    with open(data_file_path, 'r', encoding='utf-8') as encrypted_file:
+    with open('data_fortune/Fortune_Cookies_Dataset.csv', 'r', encoding='utf-8') as encrypted_file:
         encrypted_fortunes = csv.reader(encrypted_file)
         for row in encrypted_fortunes:
             encrypted_fortune = caesar_cipher_encrypt(row[0])
