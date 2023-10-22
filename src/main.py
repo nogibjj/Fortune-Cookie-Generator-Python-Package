@@ -1,15 +1,9 @@
 import fire 
 import click
 import emoji
-<<<<<<< HEAD
-import sys
-sys.path.append('../week7_afraa_simrun_fortune_cookie/')
-from lib import fetch_value_from_db,random_no, createDB
-=======
 #import sys
 #sys.path.append('../week7_afraa_simrun_fortune_cookie/src/main.py')
 from .lib import fetch_value_from_db,random_no, createDB
->>>>>>> b41439f00d3736dda4e4cfd335aa72b0f5623174
 
 # try:
 #     import lib
