@@ -13,7 +13,7 @@ with open(
 
 
 setup(
-    name="fortune-cookie-generator-demo",
+    name="fortune-cookie-demo",
     description="demo python CLI tool to generate random fortunes",
     packages=find_packages(),
     author="Simrun & Afraa",
