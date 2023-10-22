@@ -1,8 +1,11 @@
 "encryption and decryption of the fortune cookie database"
+# import os
 import random
 import csv
 import sqlite3
 import fire
+import pkg_resources
+
 
 def caesar_cipher_encrypt(text, shift=3):
     encrypted_text = ""
@@ -69,8 +72,18 @@ def createDB(dbname="fortune.db"):
                     encrypted_fortune TEXT
                 )''')
 
-    # Read the fortunes from the CSV, encrypt them and insert them into the database
-    with open('data_fortune/Fortune_Cookies_Dataset.csv', 'r') as encrypted_file:
+   # Navigate up one level (to the parent directory) to access the 'data_fortune' directory
+   # parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
+
+    # Construct the full path to the CSV file
+   # csv_file_path = os.path.join(parent_dir, 'data_fortune', 'Fortune_Cookies_Dataset.csv')
+   
+   # Use pkg_resources to access the data file included with your package
+    data_file_path = pkg_resources.resource_filename(__name__, 'data_fortune/Fortune_Cookies_Dataset.csv')
+
+
+    # Read the fortunes from the CSV, encrypt them, and insert them into the database
+    with open(data_file_path, 'r', encoding='utf-8') as encrypted_file:
         encrypted_fortunes = csv.reader(encrypted_file)
         for row in encrypted_fortunes:
             encrypted_fortune = caesar_cipher_encrypt(row[0])
