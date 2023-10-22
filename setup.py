@@ -23,12 +23,6 @@ setup(
     """,
     # install_requires=['click==7.1.2'],
     install_requires=install_requires,
-<<<<<<< HEAD
-    version='0.0.4',
-    url= "https://github.com/nogibjj/week7_afraa_simrun_fortune_cookie",
-)
-=======
     version="0.0.5",
     url="https://github.com/nogibjj/week7_afraa_simrun_fortune_cookie",
 )
->>>>>>> b41439f00d3736dda4e4cfd335aa72b0f5623174
