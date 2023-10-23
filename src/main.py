@@ -3,8 +3,9 @@ import click
 import emoji
 import sys
 #sys.path.append('../week7_afraa_simrun_fortune_cookie/src/main.py')
-sys.path.insert(0,'/src')
-from lib import fetch_value_from_db,random_no, createDB
+# sys.path.insert(0,'/src')
+from .lib import fetch_value_from_db,random_no, createDB
+from .data import fortune_data_values
 
 # try:
 #     import lib
@@ -15,7 +16,8 @@ from lib import fetch_value_from_db,random_no, createDB
 @click.command()
 
 def main():
-    createDB()
+    data = fortune_data_values() 
+    createDB(data)
     # print("\nFortune db created \n")
     randNum = random_no()
     # print("Random number Generated is: ", randNum)

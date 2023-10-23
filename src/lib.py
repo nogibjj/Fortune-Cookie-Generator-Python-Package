@@ -4,7 +4,6 @@ import random
 import csv
 import sqlite3
 import fire
-import pkg_resources
 
 
 def caesar_cipher_encrypt(text, shift=3):
@@ -43,7 +42,7 @@ def caesar_cipher_decrypt(text, shift=3):
 
 def fetch_value_from_db(rand_num):
       # Check if the random number is within the valid range
-    if 1 <= rand_num <= 1017:
+    if 2 <= rand_num <= 1022:
         conn = sqlite3.connect("fortune.db")
         cursor = conn.cursor()
         # Subtract 1 from the random number since Python uses 0-based indexing
@@ -60,10 +59,12 @@ def fetch_value_from_db(rand_num):
         return "Random Number out of Range"
 
 def random_no():
-    random_number = random.randint(2, 1018)
+    # random_number = random.randint(2, 1018)
+    random_number = random.randint(2, 1021)
     return random_number
 
-def createDB(dbname="fortune.db"):
+def createDB(data):
+    dbname="fortune.db"
     conn = sqlite3.connect(dbname)
     cursor = conn.cursor()
     cursor.execute('DROP TABLE IF EXISTS fortune')
@@ -72,24 +73,13 @@ def createDB(dbname="fortune.db"):
                     encrypted_fortune TEXT
                 )''')
 
-   # Navigate up one level (to the parent directory) to access the 'data_fortune' directory
-   # parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
+    # data = fortune_data_values()  # Get the data from the imported function
 
-    # Construct the full path to the CSV file
-   # csv_file_path = os.path.join(parent_dir, 'data_fortune', 'Fortune_Cookies_Dataset.csv')
-   
-   # Use pkg_resources to access the data file included with your package
-    #data_file_path = pkg_resources.resource_filename(__name__, '/workspaces/week7_afraa_simrun_fortune_cookie/data_fortune/Fortune_Cookies_Dataset.csv')
-
-
-    # Read the fortunes from the CSV, encrypt them, and insert them into the database
-    with open('data_fortune/Fortune_Cookies_Dataset.csv', 'r', encoding='utf-8') as encrypted_file:
-        encrypted_fortunes = csv.reader(encrypted_file)
-        for row in encrypted_fortunes:
-            encrypted_fortune = caesar_cipher_encrypt(row[0])
-            cursor.execute("INSERT INTO fortune (encrypted_fortune) VALUES (?)", (encrypted_fortune,))
+    # Read the fortunes from the data and encrypt them, then insert them into the database
+    for row in data.strip().split('\n')[1:]:
+        encrypted_fortune = caesar_cipher_encrypt(row)
+        cursor.execute("INSERT INTO fortune (encrypted_fortune) VALUES (?)", (encrypted_fortune,))
 
     # Commit the changes and close the connection
     conn.commit()
     conn.close()
-

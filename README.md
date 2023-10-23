@@ -7,6 +7,7 @@ This project was a collaboration with Afraa and Simrun for creating a package ca
 
 ## Code Overview
 
+<<<<<<< HEAD
 In the lib.py there is code for the functions caesar_cipher_encrypt, caesar_cipher_decrypt, fetch_value_from_db, random_no(), and, createDB(dbname="fortune.db"). 
 
 
@@ -15,3 +16,6 @@ In the lib.py there is code for the functions caesar_cipher_encrypt, caesar_ciph
 ## Conclusion
 
 This script facilitates the exploration of the relationship between log GDP per capita and infant mortality rate using World Development Indicators data. It provides essential descriptive statistics for further analysis.
+=======
+In the lib.py there is code for the functions caesar_cipher_encrypt, caesar_cipher_decrypt, fetch_value_from_db, random_no(), and, createDB(dbname="fortune.db"). 
+>>>>>>> 71912ea (working changes)

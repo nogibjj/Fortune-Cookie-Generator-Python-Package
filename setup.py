@@ -13,9 +13,10 @@ with open(
 
 
 setup(
-    name="fortune-cookie-demo",
+    name="fortune-cookie-generator-demo",
     description="demo python CLI tool to generate random fortunes",
     packages=find_packages(),
+    include_package_data=True,
     author="Simrun & Afraa",
     entry_points="""
     [console_scripts]
@@ -23,6 +24,6 @@ setup(
     """,
     # install_requires=['click==7.1.2'],
     install_requires=install_requires,
-    version="0.0.5",
+    version="0.0.13",
     url="https://github.com/nogibjj/week7_afraa_simrun_fortune_cookie",
 )
