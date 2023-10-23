@@ -1,9 +1,10 @@
-import fire 
+import fire
 import click
 import emoji
+
 # from .lib import fetch_value_from_db,random_no, createDB
 # from .data import fortune_data_values
-from src.lib import fetch_value_from_db,random_no, createDB
+from src.lib import fetch_value_from_db, random_no, createDB
 from src.data import fortune_data_values
 
 # try:
@@ -12,10 +13,10 @@ from src.data import fortune_data_values
 #     sys.path.insert(1, './src')
 #     import lib
 
-@click.command()
 
+@click.command()
 def main():
-    data = fortune_data_values() 
+    data = fortune_data_values()
     createDB(data)
     # print("\nFortune db created \n")
     randNum = random_no()
@@ -24,6 +25,7 @@ def main():
     x = emoji.emojize(":sparkles:")
     print(f"\nYour fortune for the day is:\n{x} {fortune_text} {x}")
     print("\n")
+
 
 if __name__ == "__main__":
     fire.Fire(main)
