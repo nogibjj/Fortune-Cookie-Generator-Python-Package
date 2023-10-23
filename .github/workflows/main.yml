@@ -22,7 +22,7 @@ jobs:
       - name: deploy
         run: make deploy 
       - name: Run main script
-        run: python3 src/main.py
+        run: python3 main.py
       - name: List files
         run: |
           pwd
