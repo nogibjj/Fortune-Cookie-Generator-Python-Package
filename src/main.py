@@ -1,11 +1,10 @@
 import fire 
 import click
 import emoji
-import sys
 # from .lib import fetch_value_from_db,random_no, createDB
 # from .data import fortune_data_values
-from src.lib import fetch_value_from_db,random_no, createDB
-from src.data import fortune_data_values
+from .lib import fetch_value_from_db,random_no, createDB
+from .data import fortune_data_values
 
 # try:
 #     import lib
