@@ -44,6 +44,10 @@ This Fortune Cookie Packaging tool offers the following functionality:
 
 ***
 
+## Interesting Concept
+From the 1000+ fortunes we have created an encrypted database so that none of the fortunes are accesible to the general public and essentially hiding the fortune. It is a "packaged" version of the concept of hidden fortunes in the cookie. Our tool then decrypts the fortune from the queried fortune in the encrypted database. These are randomly generated fortunes associated with a random number in the encrypted database. 
+
+
 ## Result
 
 On running the `fortune` command in the command line you get:
