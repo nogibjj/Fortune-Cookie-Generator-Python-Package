@@ -1,6 +1,7 @@
 # Fortune Cookie Packaging - Week 7 Mini-Project
 
-[![CI](https://github.com/nogibjj/week7_afraa_simrun_fortune_cookie/actions/workflows/main.yml/badge.svg)](https://github.com/nogibjj/week7_afraa_simrun_fortune_cookie/actions/workflows/main.yml)
+[![CI](https://github.com/nogibjjFortune-Cookie-Generator-Python-Package/actions/workflows/main.yml/badge.svg)](https://github.com/nogibjj/Fortune-Cookie-Generator-Python-Package/actions/workflows/main.yml)
+Authors: Simrun Sharma & Afraa Noureen
 
 ***
 
